@@ -9,11 +9,21 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import psycopg2
+import os 
+from dotenv import load_dotenv
 from sqlalchemy import create_engine
 from sklearn.preprocessing import StandardScaler
 from sklearn.cluster import DBSCAN
 from sklearn.neighbors import NearestNeighbors
 from kneed import KneeLocator
+
+load_dotenv()
+
+user = os.getenv("user")
+password = os.getenv("password")
+host = os.getenv("host")
+port = os.getenv("port")
+database = os.getenv("database")
 
 engine = create_engine(f"postgresql+psycopg2://{user}:{password}@{host}:{port}/{database}")
 
